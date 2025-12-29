@@ -1,0 +1,327 @@
+:root {
+  --font-main: 'Inter', sans-serif;
+  --font-JMono: 'JetBrains Mono', monospace;
+  --font-DMono: 'DM Mono', monospace;
+  --clr-bg: #000000;
+  --clr-text-main: #d4d4d4;
+  --clr-text-dim: #777777; /* Slightly brighter than #444 for readability */
+  --clr-text-dimmer: #444444;
+  --clr-text-accent: #2A7FFF ;
+}
+
+/* 1. Global Reset & Body */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Essential: prevents padding from adding to width */
+}
+
+::selection {
+  background-color: var(--clr-text-main); /* The highlight color */
+  color: var(--clr-bg);            /* The text color when highlighted */
+}
+
+/* 2. SYSTEM SCROLLBAR (Minimalist) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--clr-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #262626;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--clr-bg);
+  color: var(--clr-text-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* 2. Navbar - Fixed Sticky Logic */
+.navbar {
+  position: fixed; /* Changed from sticky */
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* This centers the fixed element */
+  z-index: 1000;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  padding: 15px 30px;
+  /* Remove margin-top: 20px; as 'top: 20px' handles it now */
+  border-radius: 50px;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 35px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--clr-text-dim);
+  letter-spacing: 5px;
+  font-family: var(--font-DMono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  transition: all 0.4s ease-in-out;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* 3. Hero Section */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjusted for navbar margin */
+  width: 100%;
+  position: relative;
+}
+
+.content-wrapper {
+  text-align: center;
+  /* border: 1px solid white; */
+}
+
+.location {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  font-family: var(--font-main); /* Technical feel for location */
+  color: var(--clr-text-dim);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding-bottom: 10px;
+  width: 100%;
+  /* text-align: left; */
+}
+
+.globe-icon{
+  height: 18px;
+}
+
+.myName {
+  color: #fff;
+  font-size: clamp(4rem, 10vw, 10rem); /* Responsive font: shrinks on mobile! */
+  font-weight: 800;
+  line-height: 1;
+  margin: 10px 0;
+  letter-spacing: -3.5px;
+}
+
+.myName span {
+  color: var(--clr-text-dimmer);
+}
+
+.occupation {
+  color: var(--clr-text-dim);
+  font-family: var(--font-DMono);
+  font-size: 20px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  /* width: 100%; */
+  /* text-align: right; */
+}
+
+.scroll-icon {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  animation: slowJump 2s ease-in-out infinite;
+  /* opacity: 0.6; */
+  transition: opacity 0.3s ease;
+}
+
+.scroll-icon:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.scroll-icon img{
+  height: 10px;
+}
+
+@keyframes slowJump {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-25px); /* Increased height for the "slow" look */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ABOUT */
+
+.about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: fit-content;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--clr-bg);
+  padding: 80px 0px;
+}
+
+.about-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 96px;
+  /* border: 2px solid white; */
+  min-width: 60%;
+  max-width: 80%;
+  height: fit-content;
+  padding: 5px;
+}
+
+.bio-box{
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  /* border: 2px solid white; */
+  max-width: 528px;
+}
+
+.title-large {
+  font-size: clamp(62px, 8vw, 75px);
+  font-weight: 900;
+  line-height: clamp(60px, 9vw, 70px);
+  word-spacing: clamp(-2px, -0.5vw, -5px);
+  letter-spacing: clamp(-1px, -0.5vw, -3.5px);
+  width: 100%;
+}
+
+
+.description {
+  font-size: clamp(18px, 5vw, 20px);
+  font-weight: 300;
+  line-height: clamp(35px, 5vw, 35px);
+  letter-spacing: -0.25px;
+  max-width: 440px;
+}
+
+.stroke-text {
+  -webkit-text-stroke: 0.75px var(--clr-text-main);
+  color: transparent;
+}
+
+.specs-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 64px;
+  /* border: 2px solid white; */
+  max-width: 528px;
+  height: 100%;
+
+}
+
+.specs-box p{
+  font-family: var(--font-DMono);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 9px;
+
+}
+
+.stack-container{
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 528px;
+  padding-top: 5px;
+}
+
+.tech-tags{
+  font-family: var(--font-JMono);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  font-size: 14px;
+  color: var(--clr-text-dim);
+  max-width: 528px;
+}
+
+.tech-tags span{
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+
+.tech-tags span:hover{
+  text-decoration: underline;
+}
+
+.focus-container{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.focus-container ul{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.focus-container ul li{
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.focus-container ul li span{
+  color: var(--clr-text-accent);
+}
+/* EXPERIENCE */
+
+.experience{
+  height: 100vh;
+  width: 100%;
+  background-color: #333333;
+}
+/* PROJECTS */
+
+.projects{
+  height: 100vh;
+  width: 100%;
+  background-color: #666666;
+}
+
+/* CONTACT */
+
+.contact{
+  height: 100vh;
+  width: 100%;
+  background-color: #999999;
+}
+
