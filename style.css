@@ -4,24 +4,24 @@
   --font-DMono: 'DM Mono', monospace;
   --clr-bg: #000000;
   --clr-text-main: #d4d4d4;
-  --clr-text-dim: #777777; /* Slightly brighter than #444 for readability */
+  --clr-text-dim: #777777;
   --clr-text-dimmer: #444444;
   --clr-text-accent: #2A7FFF ;
 }
 
-/* 1. Global Reset & Body */
+/*Global Reset*/
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Essential: prevents padding from adding to width */
+  box-sizing: border-box;
 }
 
 ::selection {
-  background-color: var(--clr-text-main); /* The highlight color */
-  color: var(--clr-bg);            /* The text color when highlighted */
+  background-color: var(--clr-text-main);
+  color: var(--clr-bg);
 }
 
-/* 2. SYSTEM SCROLLBAR (Minimalist) */
+/*SYSTEM SCROLLBAR*/
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -54,18 +54,17 @@ body {
   overflow-x: hidden;
 }
 
-/* 2. Navbar - Fixed Sticky Logic */
+/* Navbar*/
 .navbar {
-  position: fixed; /* Changed from sticky */
+  position: fixed;
   top: 20px;
   left: 50%;
-  transform: translateX(-50%); /* This centers the fixed element */
+  transform: translateX(-50%);
   z-index: 1000;
 
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(15px);
   padding: 15px 30px;
-  /* Remove margin-top: 20px; as 'top: 20px' handles it now */
   border-radius: 50px;
 }
 
@@ -88,14 +87,14 @@ nav a:hover {
   color: #fff;
 }
 
-/* 3. Hero Section */
+/*Hero Section */
 
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjusted for navbar margin */
+  height: 100vh;
   width: 100%;
   position: relative;
 }
@@ -109,7 +108,7 @@ nav a:hover {
   display: flex;
   gap: 20px;
   justify-content: center;
-  font-family: var(--font-main); /* Technical feel for location */
+  font-family: var(--font-main);
   color: var(--clr-text-dim);
   letter-spacing: 6px;
   text-transform: uppercase;
@@ -125,7 +124,7 @@ nav a:hover {
 
 .myName {
   color: #fff;
-  font-size: clamp(4rem, 10vw, 10rem); /* Responsive font: shrinks on mobile! */
+  font-size: clamp(4rem, 10vw, 10rem);
   font-weight: 800;
   line-height: 1;
   margin: 10px 0;
@@ -170,7 +169,7 @@ nav a:hover {
     transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(-25px); /* Increased height for the "slow" look */
+    transform: translateX(-50%) translateY(-25px);
   }
   100% {
     transform: translateX(-50%) translateY(0);
